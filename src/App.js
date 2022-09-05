@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import InteractiveOscillator from "./oscillator";
 
-function App() {
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gridGap: 20,
+      }}
+    >
+      <div>
+        <InteractiveOscillator
+          initOscType="sine"
+          initFreq="261.63"
+          minFreq="20"
+          maxFreq="1000"
+          id="osc-1"
+        />
+      </div>
+      <div>
+        <InteractiveOscillator
+          initOscType="triangle"
+          initFreq="329.63"
+          minFreq="20"
+          maxFreq="1000"
+          id="osc-2"
+        />
+      </div>
+      <div>
+        <InteractiveOscillator
+          initOscType="square"
+          initFreq="392.00"
+          minFreq="20"
+          maxFreq="1000"
+          id="osc-3"
+        />
+      </div>
     </div>
   );
 }
-
-export default App;
