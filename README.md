@@ -5,6 +5,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 First attempt at a react component using webAudioAPI to create an interactive Oscillator react component.
 
 ## Examples
+### Sandbox
+Try it out using [this Sandbox](https://codesandbox.io/p/github/jordyjwilliams/inter-reactive-oscillator/main/)
 ### Singular `InteractiveOscilator`
 ![Single Oscillator](./screenshots/osc.png)
 ### Default `App.js`
