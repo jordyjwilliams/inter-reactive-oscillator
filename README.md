@@ -47,6 +47,11 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 * Quick proof of concept/tutorial/teaching aid for myself.
 
 ## TODO
+### UI
 * add CSS / make this look nice
-* oscillator to view created waveform in realtime
+* osc/scope to view created waveform in realtime
+### Audio
+* Global play/pause
+* Gain sliders for each osc
+### Testing
 * add tests
