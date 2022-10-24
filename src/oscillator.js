@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import Dropdown from "./dropdown";
 import Slider from "./slider";
+import "./audioStyles.scss";
 
 const oscillatorTypes = [
   { label: "Sine", value: "sine" },
@@ -86,9 +87,8 @@ export default function InteractiveOscillator(props) {
         onClick={toggleOscillator}
         data-playing={isPlaying}
         id={`${props.id}-play-pause`}
-      >
-        <span>{isPlaying ? "Pause" : "Play"}</span>
-      </button>
+        className={isPlaying ? "play-pause-button paused" : "play-pause-button"}
+      ></button>
     </div>
   );
 }
