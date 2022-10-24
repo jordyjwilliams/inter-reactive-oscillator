@@ -50,8 +50,10 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ### UI
 * add CSS / make this look nice
 * osc/scope to view created waveform in realtime
+
 ### Audio
-* Global play/pause
+* Global play/pause --> [in progress](https://github.com/jordyjwilliams/inter-reactive-oscillator/tree/global_play_pause)
 * Gain sliders for each osc
+
 ### Testing
-* add tests
+* add/fix tests
