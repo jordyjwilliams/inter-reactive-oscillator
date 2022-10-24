@@ -4,10 +4,10 @@ import Slider from "./slider";
 import "./audioStyles.scss";
 
 const oscillatorTypes = [
-  { label: "Sine", value: "sine" },
-  { label: "Square", value: "square" },
-  { label: "Sawtooth", value: "sawtooth" },
-  { label: "Triangle", value: "triangle" },
+  { label: "\u223F", value: "sine" },
+  { label: "\u2293", value: "square" },
+  { label: "\u3030", value: "sawtooth" },
+  { label: "^⌄", value: "triangle" },
   // { label: 'Custom', value: 'custom' },
 ];
 
