@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import Dropdown from "./dropdown";
 import Slider from "./slider";
 import "./audioStyles.scss";
@@ -18,6 +18,7 @@ export default function InteractiveOscillator(props) {
   const [oscType, setOscType] = useState(props.initOscType);
   const audioContextRef = useRef();
   const oscRef = useRef();
+  const playingRef = useRef(false);
 
   // handler for frequency slider
   const onSlideFreq = (event) => {
@@ -58,14 +59,23 @@ export default function InteractiveOscillator(props) {
   // Play/Pause
   const toggleOscillator = () => {
     console.log(
-      `${props.id} oscillator ` + (props.isPlaying ? "stopped" : "started")
+      `${props.id} oscillator ` + (playingRef.current ? "stopped" : "started")
     );
-    audioContextRef.current.resume();
-    props.isPlaying
+    props.setPlaying((play) => !play);
+    playingRef.current
       ? audioContextRef.current.suspend()
       : audioContextRef.current.resume();
-    props.setPlaying((play) => !play);
+    playingRef.current = !props.isPlaying;
   };
+  // update play state
+  // TODO: callback
+  useEffect(() => {
+    if (props.isPlaying !== playingRef.current) {
+      console.log(props.isPlaying);
+      console.log(playingRef.current);
+      toggleOscillator();
+    }
+  }, [props.isPlaying, toggleOscillator]);
   return (
     <div>
       <Dropdown
