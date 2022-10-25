@@ -15,9 +15,9 @@ export default function InteractiveOscillator(props) {
   // setup default useState objects
   const [isPlaying, setPlaying] = useState(false);
   const [freq, setFreq] = useState(props.initFreq);
+  const [oscType, setOscType] = useState(props.initOscType);
   const audioContextRef = useRef();
   const oscRef = useRef();
-  const [oscType, setOscType] = useState(props.initOscType);
 
   // handler for frequency slider
   const onSlideFreq = (event) => {
