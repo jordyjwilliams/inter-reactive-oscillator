@@ -13,7 +13,7 @@ const oscillatorTypes = [
 
 export default function InteractiveOscillator(props) {
   // setup default useState objects
-  const [isPlaying, setPlaying] = useState(false);
+  // const props.(props.isPlaying && props.setPlaying)
   const [freq, setFreq] = useState(props.initFreq);
   const [oscType, setOscType] = useState(props.initOscType);
   const audioContextRef = useRef();
@@ -58,13 +58,13 @@ export default function InteractiveOscillator(props) {
   // Play/Pause
   const toggleOscillator = () => {
     console.log(
-      `${props.id} oscillator ` + (isPlaying ? "stopped" : "started")
+      `${props.id} oscillator ` + (props.isPlaying ? "stopped" : "started")
     );
-    isPlaying
+    audioContextRef.current.resume();
+    props.isPlaying
       ? audioContextRef.current.suspend()
       : audioContextRef.current.resume();
-    props.isPlayingRef.current = !isPlaying;
-    setPlaying((play) => !play);
+    props.setPlaying((play) => !play);
   };
   return (
     <div>
@@ -85,9 +85,11 @@ export default function InteractiveOscillator(props) {
       />
       <button
         onClick={toggleOscillator}
-        data-playing={isPlaying}
+        data-playing={props.isPlaying}
         id={`${props.id}-play-pause`}
-        className={isPlaying ? "play-pause-button paused" : "play-pause-button"}
+        className={
+          props.isPlaying ? "play-pause-button paused" : "play-pause-button"
+        }
       ></button>
     </div>
   );
