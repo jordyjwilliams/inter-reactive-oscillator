@@ -44,11 +44,9 @@ export default function InteractiveOscillator(props) {
     oscRef.current = osc;
     audioContextRef.current = audioContext;
     audioContext.suspend();
-    // Initial ref should be set to false... Ensure here
-    props.isPlayingRef.current = isPlaying;
     // Effect cleanup function to disconnect
     return () => osc.disconnect(audioContext.destination);
-  }, [props.isPlayingRef, isPlaying]);
+  }, []);
   // update oscType
   useEffect(() => {
     if (oscRef.current) oscRef.current.type = oscType;
