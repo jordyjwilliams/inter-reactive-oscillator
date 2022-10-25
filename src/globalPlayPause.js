@@ -1,13 +1,12 @@
 import "./audioStyles.scss";
 
 export default function GlobalPlayPause(props) {
-  // oscArray of all InteractiveOscillator's
+  // playingRefArray of all InteractiveOscillator's playing refs
   const handleChange = () => {
-    // console.log(props.oscArray[0]);
-    props.oscArray.forEach((osc) => {
-      console.log(osc);
-      osc.toggleOscillator();
-      // console.log(osc.isPlaying);
+    props.playingRefArray.forEach((playingRef) => {
+      console.log(playingRef.current);
+      playingRef.current = !playingRef.current;
+      console.log(playingRef.current);
     });
   };
   const isPlaying = false;
