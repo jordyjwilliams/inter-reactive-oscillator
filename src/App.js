@@ -1,13 +1,14 @@
 import InteractiveOscillator from "./oscillator";
 import GlobalPlayPause from "./globalPlayPause";
-import React, { useRef } from "react";
+import React, { useState } from "react";
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 export default function App() {
-  const osc1PlayingRef = useRef(false);
-  const osc2PlayingRef = useRef(false);
-  const osc3PlayingRef = useRef(false);
+  const [osc1Playing, setOsc1Playing] = useState(false);
+  const [osc2Playing, setOsc2Playing] = useState(false);
+  const [osc3Playing, setOsc3Playing] = useState(false);
+
   // TODO: set these nicer
 
   const osc1 = new InteractiveOscillator({
@@ -16,7 +17,8 @@ export default function App() {
     minFreq: "20",
     maxFreq: "1000",
     id: "osc-1",
-    isPlayingRef: osc1PlayingRef,
+    isPlaying: osc1Playing,
+    setPlaying: setOsc1Playing,
   });
   const osc2 = new InteractiveOscillator({
     initOscType: "square",
@@ -24,7 +26,8 @@ export default function App() {
     minFreq: "20",
     maxFreq: "1000",
     id: "osc-2",
-    isPlayingRef: osc2PlayingRef,
+    isPlaying: osc2Playing,
+    setPlaying: setOsc2Playing,
   });
   const osc3 = new InteractiveOscillator({
     initOscType: "triangle",
@@ -32,10 +35,15 @@ export default function App() {
     minFreq: "20",
     maxFreq: "1000",
     id: "osc-3",
-    isPlayingRef: osc3PlayingRef,
+    isPlaying: osc3Playing,
+    setPlaying: setOsc3Playing,
   });
   const globalPP = new GlobalPlayPause({
-    playingRefArray: [osc1PlayingRef, osc2PlayingRef, osc3PlayingRef],
+    playStates: [
+      { isPlaying: osc1Playing, setPlaying: setOsc1Playing },
+      { isPlaying: osc2Playing, setPlaying: setOsc2Playing },
+      { isPlaying: osc3Playing, setPlaying: setOsc3Playing },
+    ],
   });
   return (
     <div
