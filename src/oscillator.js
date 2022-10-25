@@ -59,13 +59,13 @@ export default function InteractiveOscillator(props) {
   }, [freq]);
   // Play/Pause
   const toggleOscillator = () => {
-    if (isPlaying) {
-      console.log(`${props.id} oscillator stopped`);
-      audioContextRef.current.suspend();
-    } else {
-      console.log(`${props.id} oscillator started`);
-      audioContextRef.current.resume();
-    }
+    console.log(
+      `${props.id} oscillator ` + (isPlaying ? "stopped" : "started")
+    );
+    isPlaying
+      ? audioContextRef.current.suspend()
+      : audioContextRef.current.resume();
+    props.isPlayingRef.current = !isPlaying;
     setPlaying((play) => !play);
   };
   return (
