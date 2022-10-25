@@ -4,7 +4,7 @@ export default function GlobalPlayPause(props) {
   // playStates array of each InteractiveOscillator
   // isPlaying and setPlaying keys
   const handleChange = () => {
-    props.playStates[0].setPlaying(!props.playStates.isPlaying);
+    props.playStates[0].setPlaying((play) => !play);
     // props.playStates.forEach((oscPlayData) => {
     //   oscPlayData.setPlaying(!oscPlayData.isPlaying);
     // });

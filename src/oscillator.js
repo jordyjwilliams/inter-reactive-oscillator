@@ -59,23 +59,36 @@ export default function InteractiveOscillator(props) {
   // Play/Pause
   const toggleOscillator = () => {
     console.log(
-      `${props.id} oscillator ` + (playingRef.current ? "stopped" : "started")
+      `${props.id} oscillator ` + (props.isPlaying ? "stopped" : "started")
     );
     props.setPlaying((play) => !play);
-    playingRef.current
+    props.isPlaying
       ? audioContextRef.current.suspend()
       : audioContextRef.current.resume();
-    playingRef.current = !props.isPlaying;
   };
   // update play state
-  // TODO: callback
+  // TODO: callback, fix this
   useEffect(() => {
-    if (props.isPlaying !== playingRef.current) {
+    if (playingRef.current !== props.isPlaying) {
+      playingRef.current = !props.isPlaying;
+      props.setPlaying((play) => !play);
       console.log(props.isPlaying);
       console.log(playingRef.current);
       toggleOscillator();
     }
+    // toggleOscillator();
   }, [props.isPlaying, toggleOscillator]);
+  //   if (!playingRef.current) {
+  //     playingRef.current = true; // skip initial render
+  //   }
+  //   console.log("Use effect called");
+
+  //   console.log(`isPlaying: ${props.isPlaying}`);
+  //   console.log(`playingRef.current: ${playingRef.current}`);
+  //   // toggleOscillator();
+  //   console.log(`isPlaying: ${props.isPlaying}`);
+  //   console.log(`playingRef.current: ${playingRef.current}`);
+  // }, [props.isPlaying, toggleOscillator]);
   return (
     <div>
       <Dropdown
