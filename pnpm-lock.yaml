@@ -14,6 +14,7 @@ importers:
       react-scripts: ^5.0.1
       sass: ^1.55.0
       web-vitals: ^3.0.4
+      webaudio-oscilloscope: ^3.2.1
     dependencies:
       babel-cli: 6.26.0
       only-allow: 1.1.1
@@ -22,6 +23,7 @@ importers:
       react-scripts: 5.0.1_w5u3lwoijcfmmatjhtyh5gmbwq
       sass: 1.55.0
       web-vitals: 3.0.4
+      webaudio-oscilloscope: 3.2.1
     devDependencies:
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
@@ -10873,6 +10875,10 @@ packages:
 
   /web-vitals/3.0.4:
     resolution: {integrity: sha512-Yau8qf1AJ/dm6MY180Bi0qpCIuWmAfKAnOqmxLecGfIHn0+ND3H4JOhXeY73Pyi9zjSF5J4SNUewHLNUzU7mmA==}
+    dev: false
+
+  /webaudio-oscilloscope/3.2.1:
+    resolution: {integrity: sha512-yacR1TI0j6Sg0JVCYtK067bWangPQTHkOmE8pfrDp8Znv83QgfRdIVnQGz2ciYZnR2LphFOE+iLRCjhzIObemA==}
     dev: false
 
   /webidl-conversions/4.0.2:
