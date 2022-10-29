@@ -4,6 +4,7 @@ export default function Slider({ min, max, val, onSlide, label }) {
     <div>
       <br />
       <label htmlFor="numeric-input-slider-val">{label}</label>
+      <br />
       <input
         type="number"
         id="numeric-input-slider-val"
@@ -11,6 +12,7 @@ export default function Slider({ min, max, val, onSlide, label }) {
         value={val}
         onChange={(val) => onSlide(val)}
       />
+      <br />
       <input
         name="slider"
         type="range"

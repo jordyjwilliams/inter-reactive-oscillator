@@ -45,7 +45,7 @@ export default function InteractiveOscillator(props) {
     onSlide: (e) => onSlideFreq(e, props),
     min: props.minFreq,
     max: props.maxFreq,
-    label: `Current Frequency [Hz] (min: ${props.minFreq}, max: ${props.maxFreq})`,
+    label: `Frequency [Hz] (min: ${props.minFreq}, max: ${props.maxFreq})`,
     id: `${props.id}FreqSlider`,
   });
 
