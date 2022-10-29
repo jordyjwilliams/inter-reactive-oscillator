@@ -1,4 +1,4 @@
-export default function Slider({ min, max, val, onSlide, label }) {
+export default function Slider({ min, max, step, val, onSlide, label }) {
   // requires min, mix, val, onSlider, label
   return (
     <div>
@@ -20,6 +20,7 @@ export default function Slider({ min, max, val, onSlide, label }) {
         min={min}
         max={max}
         defaultValue={val}
+        step={step}
         value={val}
         onChange={(slideValue) => onSlide(slideValue)}
       />
