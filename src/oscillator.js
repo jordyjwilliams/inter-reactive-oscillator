@@ -86,7 +86,7 @@ export default function InteractiveOscillator(props) {
       gainNode.disconnect(audioContext.destination);
       audioContext.close();
     };
-  }, []);
+  }, [props.globalSource]);
   // update oscType
   useEffect(() => {
     if (oscRef.current) oscRef.current.type = oscType;
@@ -112,17 +112,20 @@ export default function InteractiveOscillator(props) {
     }
   }, [props.isPlaying, props.id, props.setPlaying]);
   return (
-    <div>
-      {oscSelector}
-      {freqSlider}
-      {gainSlider}
-      <button
-        onClick={() => props.setPlaying((play) => !play)}
-        id={`${props.id}-play-pause`}
-        className={
-          props.isPlaying ? "play-pause-button paused" : "play-pause-button"
-        }
-      ></button>
-    </div>
+    (
+      <div>
+        {oscSelector}
+        {freqSlider}
+        {gainSlider}
+        <button
+          onClick={() => props.setPlaying((play) => !play)}
+          id={`${props.id}-play-pause`}
+          className={
+            props.isPlaying ? "play-pause-button paused" : "play-pause-button"
+          }
+        ></button>
+      </div>
+    ),
+    [oscRef]
   );
 }
