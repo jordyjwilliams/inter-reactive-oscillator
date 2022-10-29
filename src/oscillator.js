@@ -28,7 +28,12 @@ export default function InteractiveOscillator(props) {
     console.log(`${props.id} Frequency set to ${event.target.value} Hz`);
     setFreq(event.target.value);
   };
-  // handler for switching type
+  // handler: gain slider
+  const onSlideGain = (event, props) => {
+    console.log(`${props.id} Gain set to ${event.target.value}`);
+    setGain(event.target.value);
+  };
+  // handler: oscType
   const handleChangeOscType = (event, props) => {
     console.log(
       `${props.id} Oscillator changed from ${oscType} to ${event.target.value} wave type`
