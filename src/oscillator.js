@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, useCallback } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Dropdown from "./dropdown";
 import Slider from "./slider";
 import "./audioStyles.scss";
@@ -57,38 +57,17 @@ export default function InteractiveOscillator(props) {
     if (oscRef.current) oscRef.current.frequency.value = freq;
   }, [freq]);
   // Play/Pause
-  const toggleOscillator = () => {
-    console.log(
-      `${props.id} oscillator ` + (props.isPlaying ? "stopped" : "started")
-    );
-    props.setPlaying((play) => !play);
-    props.isPlaying
-      ? audioContextRef.current.suspend()
-      : audioContextRef.current.resume();
-  };
-  // update play state
-  // TODO: callback, fix this
   useEffect(() => {
     if (playingRef.current !== props.isPlaying) {
-      playingRef.current = !props.isPlaying;
-      props.setPlaying((play) => !play);
-      console.log(props.isPlaying);
-      console.log(playingRef.current);
-      toggleOscillator();
+      console.log(
+        `${props.id} oscillator ` + (playingRef.current ? "stopped" : "started")
+      );
+      playingRef.current
+        ? audioContextRef.current.suspend()
+        : audioContextRef.current.resume();
+      playingRef.current = !playingRef.current;
     }
-    // toggleOscillator();
-  }, [props.isPlaying, toggleOscillator]);
-  //   if (!playingRef.current) {
-  //     playingRef.current = true; // skip initial render
-  //   }
-  //   console.log("Use effect called");
-
-  //   console.log(`isPlaying: ${props.isPlaying}`);
-  //   console.log(`playingRef.current: ${playingRef.current}`);
-  //   // toggleOscillator();
-  //   console.log(`isPlaying: ${props.isPlaying}`);
-  //   console.log(`playingRef.current: ${playingRef.current}`);
-  // }, [props.isPlaying, toggleOscillator]);
+  }, [props.isPlaying, props.id, props.setPlaying]);
   return (
     <div>
       <Dropdown
@@ -107,8 +86,7 @@ export default function InteractiveOscillator(props) {
         id={`${props.id}-freq-slider`}
       />
       <button
-        onClick={toggleOscillator}
-        data-playing={props.isPlaying}
+        onClick={() => props.setPlaying((play) => !play)}
         id={`${props.id}-play-pause`}
         className={
           props.isPlaying ? "play-pause-button paused" : "play-pause-button"
