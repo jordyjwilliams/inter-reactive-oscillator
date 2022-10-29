@@ -35,12 +35,12 @@ For development and building:
 
 ## TODO
 ### UI
-* add CSS / make this look nice
-* osc/scope to view created waveform in realtime
+* Add CSS / make this look nice
+* Osc/scope to view created waveform in realtime
 
 ### Audio
-* Global play/pause --> [in progress](https://github.com/jordyjwilliams/inter-reactive-oscillator/tree/global_play_pause)
 * Gain sliders for each osc
 
-### Testing
-* add/fix tests
+### Testing/CICD
+* Add/fix tests
+* Add CICD --> automated testing and branch rules
