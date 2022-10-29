@@ -75,8 +75,12 @@ export default function InteractiveOscillator(props) {
     oscRef.current = osc;
     audioContextRef.current = audioContext;
     audioContext.suspend();
-    // Effect cleanup function to disconnect
-    return () => osc.disconnect(audioContext.destination);
+    // Disconnect osc
+    return () => {
+      osc.disconnect(gainNode);
+      gainNode.disconnect(audioContext.destination);
+      audioContext.close();
+    };
   }, []);
   // update oscType
   useEffect(() => {
