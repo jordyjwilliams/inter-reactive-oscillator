@@ -12,6 +12,7 @@ const oscillatorTypes = [
 ];
 
 export default function InteractiveOscillator(props) {
+  // TODO: reduce the calls here... Define out of fn
   // setup default useState objects
   // const props.(props.isPlaying && props.setPlaying)
   const [freq, setFreq] = useState(props.initFreq);
@@ -21,17 +22,32 @@ export default function InteractiveOscillator(props) {
   const playingRef = useRef(false);
 
   // handler for frequency slider
-  const onSlideFreq = (event) => {
+  const onSlideFreq = (event, props) => {
     console.log(`${props.id} Frequency set to ${event.target.value} Hz`);
     setFreq(event.target.value);
   };
   // handler for switching type
-  const handleChangeOscType = (event) => {
+  const handleChangeOscType = (event, props) => {
     console.log(
       `${props.id} Oscillator changed from ${oscType} to ${event.target.value} wave type`
     );
     setOscType(event.target.value);
   };
+  const oscSelector = new Dropdown({
+    label: "Osc Type: ",
+    initValue: oscType,
+    handleChange: (e) => handleChangeOscType(e, props),
+    optionList: oscillatorTypes,
+    id: `${props.id}OscTypeDropdown`,
+  });
+  const freqSlider = new Slider({
+    val: freq,
+    onSlide: (e) => onSlideFreq(e, props),
+    min: props.minFreq,
+    max: props.maxFreq,
+    label: `Current Frequency [Hz] (min: ${props.minFreq}, max: ${props.maxFreq})`,
+    id: `${props.id}FreqSlider`,
+  });
 
   // initial osc starting
   useEffect(() => {
@@ -70,21 +86,8 @@ export default function InteractiveOscillator(props) {
   }, [props.isPlaying, props.id, props.setPlaying]);
   return (
     <div>
-      <Dropdown
-        label="Osc Type: "
-        initValue={oscType}
-        handleChange={handleChangeOscType}
-        optionList={oscillatorTypes}
-        id={`${props.id}-osc-type-dropdown`}
-      />
-      <Slider
-        val={freq}
-        onSlide={onSlideFreq}
-        min={props.minFreq}
-        max={props.maxFreq}
-        label={`Current Frequency [Hz] (min: ${props.minFreq}, max: ${props.maxFreq})`}
-        id={`${props.id}-freq-slider`}
-      />
+      {oscSelector}
+      {freqSlider}
       <button
         onClick={() => props.setPlaying((play) => !play)}
         id={`${props.id}-play-pause`}
