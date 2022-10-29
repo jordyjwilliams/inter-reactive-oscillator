@@ -17,7 +17,9 @@ export default function InteractiveOscillator(props) {
   // const props.(props.isPlaying && props.setPlaying)
   const [freq, setFreq] = useState(props.initFreq);
   const [oscType, setOscType] = useState(props.initOscType);
+  const [gain, setGain] = useState(1);
   const audioContextRef = useRef();
+  const gainNodeRef = useRef();
   const oscRef = useRef();
   const playingRef = useRef(false);
 
@@ -62,11 +64,14 @@ export default function InteractiveOscillator(props) {
   useEffect(() => {
     const audioContext = new AudioContext();
     const osc = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
     // Connect and start
-    osc.connect(audioContext.destination);
+    osc.connect(gainNode);
+    gainNode.connect(audioContext.destination);
     osc.start();
 
-    // Store context and start suspended
+    // Create refs to updatable params, start suspended
+    gainNodeRef.current = gainNode;
     oscRef.current = osc;
     audioContextRef.current = audioContext;
     audioContext.suspend();
