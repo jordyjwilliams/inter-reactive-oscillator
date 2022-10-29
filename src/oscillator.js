@@ -34,7 +34,7 @@ export default function InteractiveOscillator(props) {
     setOscType(event.target.value);
   };
   const oscSelector = new Dropdown({
-    label: "Osc Type: ",
+    label: "Shape: ",
     initValue: oscType,
     handleChange: (e) => handleChangeOscType(e, props),
     optionList: oscillatorTypes,
