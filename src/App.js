@@ -57,7 +57,7 @@ export default function App() {
       }}
     >
       <div id="osc-1-div" htmlFor="osc-1">
-        {osc1}"
+        {osc1}
       </div>
       <div id="osc-2-div" htmlFor="osc-2">
         {osc2}
