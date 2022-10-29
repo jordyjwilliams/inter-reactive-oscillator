@@ -38,7 +38,7 @@ export default function InteractiveOscillator(props) {
     initValue: oscType,
     handleChange: (e) => handleChangeOscType(e, props),
     optionList: oscillatorTypes,
-    id: `${props.id}OscTypeDropdown`,
+    id: `${props.id}-osc-type-dropdown`,
   });
   const freqSlider = new Slider({
     val: freq,
@@ -46,7 +46,8 @@ export default function InteractiveOscillator(props) {
     min: props.minFreq,
     max: props.maxFreq,
     label: `Frequency [Hz] (min: ${props.minFreq}, max: ${props.maxFreq})`,
-    id: `${props.id}FreqSlider`,
+    id: `${props.id}-freq-slider`,
+  });
   });
 
   // initial osc starting
