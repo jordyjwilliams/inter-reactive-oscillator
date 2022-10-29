@@ -95,7 +95,11 @@ export default function InteractiveOscillator(props) {
   useEffect(() => {
     if (oscRef.current) oscRef.current.frequency.value = freq;
   }, [freq]);
-  // Play/Pause
+  // update gain values
+  useEffect(() => {
+    if (gainNodeRef.current) gainNodeRef.current.gain.value = gain;
+  }, [gain]);
+  // updates play/pause state
   useEffect(() => {
     if (playingRef.current !== props.isPlaying) {
       console.log(
