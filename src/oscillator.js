@@ -48,6 +48,14 @@ export default function InteractiveOscillator(props) {
     label: `Frequency [Hz] (min: ${props.minFreq}, max: ${props.maxFreq})`,
     id: `${props.id}-freq-slider`,
   });
+  const gainSlider = new Slider({
+    val: gain,
+    onSlide: (e) => onSlideGain(e, props),
+    min: 0,
+    max: 1,
+    step: 0.01,
+    label: `Gain (0-1)`,
+    id: `${props.id}-gain-slider`,
   });
 
   // initial osc starting
@@ -89,6 +97,7 @@ export default function InteractiveOscillator(props) {
     <div>
       {oscSelector}
       {freqSlider}
+      {gainSlider}
       <button
         onClick={() => props.setPlaying((play) => !play)}
         id={`${props.id}-play-pause`}
