@@ -23,7 +23,7 @@ export default function InteractiveOscillator(props) {
   const oscRef = useRef();
   const playingRef = useRef(false);
 
-  // handler for frequency slider
+  // handler: freq slider
   const onSlideFreq = (event, props) => {
     console.log(`${props.id} Frequency set to ${event.target.value} Hz`);
     setFreq(event.target.value);
@@ -86,7 +86,7 @@ export default function InteractiveOscillator(props) {
   useEffect(() => {
     if (oscRef.current) oscRef.current.type = oscType;
   }, [oscType]);
-  // update freq value
+  // update freq values
   useEffect(() => {
     if (oscRef.current) oscRef.current.frequency.value = freq;
   }, [freq]);
