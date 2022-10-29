@@ -4,6 +4,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 First attempt at a react component using webAudioAPI to create an interactive Oscillator react component.
 
+This project uses [pnpm](https://pnpm.io/) for package management.
+* To install this globally run `npm i -g pnpm`
+
 ## Examples
 ### Sandbox
 Try it out using [this Sandbox](https://codesandbox.io/p/github/jordyjwilliams/inter-reactive-oscillator/main/)
@@ -18,21 +21,21 @@ Try it out using [this Sandbox](https://codesandbox.io/p/github/jordyjwilliams/i
 
 In the project directory, you can run:
 
-### `npm start`
+### `pnpm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 By default 3 nested interactive oscillator objects will be generated in columns.
 
-### `npm test`
+### `pnpm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 **Not currently working**
 
-### `npm run build`
+### `pnpm run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
