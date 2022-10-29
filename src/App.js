@@ -44,20 +44,30 @@ export default function App() {
       { isPlaying: osc2Playing, setPlaying: setOsc2Playing },
       { isPlaying: osc3Playing, setPlaying: setOsc3Playing },
     ],
+    id: "global-play-pause",
   });
   return (
     <div
-      id="oscGrid"
+      id="osc-grid"
       style={{
         display: "grid",
         gridTemplateColumns: "repeat(3, 1fr)",
         gridGap: 20,
+        padding: 50,
       }}
     >
-      <div>{osc1}</div>
-      <div>{osc2}</div>
-      <div>{osc3}</div>
-      <div id="globalDiv">{globalPP}</div>
+      <div id="osc-1-div" htmlFor="osc-1">
+        {osc1}"
+      </div>
+      <div id="osc-2-div" htmlFor="osc-2">
+        {osc2}
+      </div>
+      <div id="osc-3-div" htmlFor="osc-3">
+        {osc3}
+      </div>
+      <div id="global-div" htmlFor="global-play-pause">
+        {globalPP}
+      </div>
     </div>
   );
 }
