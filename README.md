@@ -8,7 +8,7 @@ This project uses [pnpm](https://pnpm.io/) for package management.
 * To install this globally run `npm i -g pnpm`
 
 ## Screenshots
-### Singular `InteractiveOscilator`
+### Singular `InteractiveOscillator`
 ![Single Oscillator](./screenshots/osc.png)
 ### Default `App.js`
 ![Triple Oscillator](./screenshots/tri_osc.png)
@@ -34,6 +34,13 @@ For development and building:
 * Quick proof of concept/tutorial/teaching aid for myself.
 
 ## TODO
-* add CSS / make this look nice
-* oscillator to view created waveform in realtime
-* add tests
+### UI
+* Add CSS / make this look nice
+* Osc/scope to view created waveform in realtime
+
+### Audio
+* Gain sliders for each osc
+
+### Testing/CICD
+* Add/fix tests
+* Add CICD --> automated testing and branch rules

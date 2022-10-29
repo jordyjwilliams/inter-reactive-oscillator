@@ -12,25 +12,42 @@ const oscillatorTypes = [
 ];
 
 export default function InteractiveOscillator(props) {
+  // TODO: reduce the calls here... Define out of fn
   // setup default useState objects
-  const [isPlaying, setPlaying] = useState(false);
+  // const props.(props.isPlaying && props.setPlaying)
   const [freq, setFreq] = useState(props.initFreq);
+  const [oscType, setOscType] = useState(props.initOscType);
   const audioContextRef = useRef();
   const oscRef = useRef();
-  const [oscType, setOscType] = useState(props.initOscType);
+  const playingRef = useRef(false);
 
   // handler for frequency slider
-  const onSlideFreq = (event) => {
+  const onSlideFreq = (event, props) => {
     console.log(`${props.id} Frequency set to ${event.target.value} Hz`);
     setFreq(event.target.value);
   };
   // handler for switching type
-  const handleChangeOscType = (event) => {
+  const handleChangeOscType = (event, props) => {
     console.log(
       `${props.id} Oscillator changed from ${oscType} to ${event.target.value} wave type`
     );
     setOscType(event.target.value);
   };
+  const oscSelector = new Dropdown({
+    label: "Shape: ",
+    initValue: oscType,
+    handleChange: (e) => handleChangeOscType(e, props),
+    optionList: oscillatorTypes,
+    id: `${props.id}OscTypeDropdown`,
+  });
+  const freqSlider = new Slider({
+    val: freq,
+    onSlide: (e) => onSlideFreq(e, props),
+    min: props.minFreq,
+    max: props.maxFreq,
+    label: `Frequency [Hz] (min: ${props.minFreq}, max: ${props.maxFreq})`,
+    id: `${props.id}FreqSlider`,
+  });
 
   // initial osc starting
   useEffect(() => {
@@ -56,38 +73,27 @@ export default function InteractiveOscillator(props) {
     if (oscRef.current) oscRef.current.frequency.value = freq;
   }, [freq]);
   // Play/Pause
-  const toggleOscillator = () => {
-    if (isPlaying) {
-      console.log(`${props.id} oscillator stopped`);
-      audioContextRef.current.suspend();
-    } else {
-      console.log(`${props.id} oscillator started`);
-      audioContextRef.current.resume();
+  useEffect(() => {
+    if (playingRef.current !== props.isPlaying) {
+      console.log(
+        `${props.id} oscillator ` + (playingRef.current ? "stopped" : "started")
+      );
+      playingRef.current
+        ? audioContextRef.current.suspend()
+        : audioContextRef.current.resume();
+      playingRef.current = !playingRef.current;
     }
-    setPlaying((play) => !play);
-  };
+  }, [props.isPlaying, props.id, props.setPlaying]);
   return (
     <div>
-      <Dropdown
-        label="Osc Type: "
-        initValue={oscType}
-        handleChange={handleChangeOscType}
-        optionList={oscillatorTypes}
-        id={`${props.id}-osc-type-dropdown`}
-      />
-      <Slider
-        val={freq}
-        onSlide={onSlideFreq}
-        min={props.minFreq}
-        max={props.maxFreq}
-        label={`Current Frequency [Hz] (min: ${props.minFreq}, max: ${props.maxFreq})`}
-        id={`${props.id}-freq-slider`}
-      />
+      {oscSelector}
+      {freqSlider}
       <button
-        onClick={toggleOscillator}
-        data-playing={isPlaying}
+        onClick={() => props.setPlaying((play) => !play)}
         id={`${props.id}-play-pause`}
-        className={isPlaying ? "play-pause-button paused" : "play-pause-button"}
+        className={
+          props.isPlaying ? "play-pause-button paused" : "play-pause-button"
+        }
       ></button>
     </div>
   );
