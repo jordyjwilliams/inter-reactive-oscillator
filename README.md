@@ -36,10 +36,8 @@ For development and building:
 ## TODO
 ### UI
 * Add CSS / make this look nice
-* Osc/scope to view created waveform in realtime
-
-### Audio
-* Gain sliders for each osc
+* Osc/scope to view created waveform
+    * More possibilities in `webAudioAPI`
 
 ### Testing/CICD
 * Add/fix tests
