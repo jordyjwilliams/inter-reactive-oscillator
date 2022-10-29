@@ -17,16 +17,23 @@ export default function InteractiveOscillator(props) {
   // const props.(props.isPlaying && props.setPlaying)
   const [freq, setFreq] = useState(props.initFreq);
   const [oscType, setOscType] = useState(props.initOscType);
+  const [gain, setGain] = useState(1);
   const audioContextRef = useRef();
+  const gainNodeRef = useRef();
   const oscRef = useRef();
   const playingRef = useRef(false);
 
-  // handler for frequency slider
+  // handler: freq slider
   const onSlideFreq = (event, props) => {
     console.log(`${props.id} Frequency set to ${event.target.value} Hz`);
     setFreq(event.target.value);
   };
-  // handler for switching type
+  // handler: gain slider
+  const onSlideGain = (event, props) => {
+    console.log(`${props.id} Gain set to ${event.target.value}`);
+    setGain(event.target.value);
+  };
+  // handler: oscType
   const handleChangeOscType = (event, props) => {
     console.log(
       `${props.id} Oscillator changed from ${oscType} to ${event.target.value} wave type`
@@ -38,7 +45,7 @@ export default function InteractiveOscillator(props) {
     initValue: oscType,
     handleChange: (e) => handleChangeOscType(e, props),
     optionList: oscillatorTypes,
-    id: `${props.id}OscTypeDropdown`,
+    id: `${props.id}-osc-type-dropdown`,
   });
   const freqSlider = new Slider({
     val: freq,
@@ -46,33 +53,53 @@ export default function InteractiveOscillator(props) {
     min: props.minFreq,
     max: props.maxFreq,
     label: `Frequency [Hz] (min: ${props.minFreq}, max: ${props.maxFreq})`,
-    id: `${props.id}FreqSlider`,
+    id: `${props.id}-freq-slider`,
+  });
+  const gainSlider = new Slider({
+    val: gain,
+    onSlide: (e) => onSlideGain(e, props),
+    min: 0,
+    max: 1,
+    step: 0.01,
+    label: `Gain (0-1)`,
+    id: `${props.id}-gain-slider`,
   });
 
   // initial osc starting
   useEffect(() => {
     const audioContext = new AudioContext();
     const osc = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
     // Connect and start
-    osc.connect(audioContext.destination);
+    osc.connect(gainNode);
+    gainNode.connect(audioContext.destination);
     osc.start();
 
-    // Store context and start suspended
+    // Create refs to updatable params, start suspended
+    gainNodeRef.current = gainNode;
     oscRef.current = osc;
     audioContextRef.current = audioContext;
     audioContext.suspend();
-    // Effect cleanup function to disconnect
-    return () => osc.disconnect(audioContext.destination);
+    // Disconnect osc
+    return () => {
+      osc.disconnect(gainNode);
+      gainNode.disconnect(audioContext.destination);
+      audioContext.close();
+    };
   }, []);
   // update oscType
   useEffect(() => {
     if (oscRef.current) oscRef.current.type = oscType;
   }, [oscType]);
-  // update freq value
+  // update freq values
   useEffect(() => {
     if (oscRef.current) oscRef.current.frequency.value = freq;
   }, [freq]);
-  // Play/Pause
+  // update gain values
+  useEffect(() => {
+    if (gainNodeRef.current) gainNodeRef.current.gain.value = gain;
+  }, [gain]);
+  // updates play/pause state
   useEffect(() => {
     if (playingRef.current !== props.isPlaying) {
       console.log(
@@ -88,6 +115,7 @@ export default function InteractiveOscillator(props) {
     <div>
       {oscSelector}
       {freqSlider}
+      {gainSlider}
       <button
         onClick={() => props.setPlaying((play) => !play)}
         id={`${props.id}-play-pause`}
