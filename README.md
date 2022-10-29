@@ -8,7 +8,7 @@ This project uses [pnpm](https://pnpm.io/) for package management.
 * To install this globally run `npm i -g pnpm`
 
 ## Screenshots
-### Singular `InteractiveOscilator`
+### Singular `InteractiveOscillator`
 ![Single Oscillator](./screenshots/osc.png)
 ### Default `App.js`
 ![Triple Oscillator](./screenshots/tri_osc.png)
