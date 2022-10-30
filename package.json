@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "babel-cli": "^6.26.0",
+    "better-docs": "^2.7.2",
+    "jsdocs": "^1.0.0",
     "only-allow": "^1.1.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -16,7 +18,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "docs": "jsdoc -c jsdoc.conf.json"
   },
   "eslintConfig": {
     "extends": [
