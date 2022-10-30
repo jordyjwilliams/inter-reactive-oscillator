@@ -1,14 +1,14 @@
-export default function Slider({ min, max, step, val, onSlide, label }) {
+export default function Slider({ min, max, step, val, onSlide, label, id }) {
   // requires min, mix, val, onSlider, label
   return (
     <div>
       <br />
-      <label htmlFor="numeric-input-slider-val">{label}</label>
+      <label htmlFor={`${id}-numeric-input-slider-val`}>{label}</label>
       <br />
       <input
         type="number"
-        id="numeric-input-slider-val"
-        htmlFor="slider-input"
+        id={`${id}-numeric-input-slider-val`}
+        htmlFor={`${id}-slider-input`}
         value={val}
         onChange={(val) => onSlide(val)}
       />
@@ -16,7 +16,7 @@ export default function Slider({ min, max, step, val, onSlide, label }) {
       <input
         name="slider"
         type="range"
-        id="slider-input"
+        id={`${id}-slider-input`}
         min={min}
         max={max}
         defaultValue={val}

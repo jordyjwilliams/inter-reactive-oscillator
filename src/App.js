@@ -8,9 +8,10 @@ export default function App() {
   const [osc1Playing, setOsc1Playing] = useState(false);
   const [osc2Playing, setOsc2Playing] = useState(false);
   const [osc3Playing, setOsc3Playing] = useState(false);
-
-  // TODO: set these nicer
-
+  /**
+   * TODO: look at removing isPlaying, setPlaying here
+   * Instantiate objects with refactored code, then pass to global
+   */
   const osc1 = new InteractiveOscillator({
     initOscType: "sine",
     initFreq: "73",
