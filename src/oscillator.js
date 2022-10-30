@@ -73,14 +73,17 @@ export default function InteractiveOscillator(props) {
   //! useEffects //
   // update oscType
   useEffect(() => {
-    if (oscRef.current) oscRef.current.type = oscType;
-  }, [oscType]);
+    if (oscRef.current) oscRef.current.type = oscType.get;
+  }, [oscType.get, oscRef]);
   // update freq values
   useEffect(() => {
-    if (oscRef.current) oscRef.current.frequency.value = freq;
-  }, [freq]);
+    if (oscRef.current) oscRef.current.frequency.value = freqState.get;
+  }, [freqState.get, oscRef]);
   // update gain values
   useEffect(() => {
+    if (gainNodeRef.current) gainNodeRef.current.gain.value = gainState.get;
+  }, [gainState.get, gainNodeRef]);
+
   return (
     <div>
       {oscSelector}
