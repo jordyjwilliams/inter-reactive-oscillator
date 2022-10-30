@@ -4,8 +4,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 First attempt at a react component using webAudioAPI to create an interactive Oscillator react component.
 
+## Dependencies
 This project uses [pnpm](https://pnpm.io/) for package management.
 * To install this globally run `npm i -g pnpm`
+
+
+### Dev Dependencies
+In addition to the `devDependencies` in the `package.json` this project uses the following packages:
+* [commitizen](https://commitizen-tools.github.io/commitizen/): `pip install commitizen`
+* [pre-commit](https://pre-commit.com/) `pip install pre-commit`
+
+Please install these locally before commencing. The use of the `pip`/`Python` packages is simply as they are intended to be more 'cross-platform' than their `npm` counterparts.
 
 ## Screenshots
 ### Singular `InteractiveOscillator`
