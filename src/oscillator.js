@@ -1,6 +1,8 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Dropdown from "./dropdown";
 import Slider from "./slider";
+import SetupOscillator from "./setupOscillator";
+import SetupStates from "./setupOscillatorStates";
 import "./audioStyles.scss";
 import PropTypes from "prop-types";
 
@@ -34,6 +36,9 @@ const oscillatorTypes = [
  * )
  */
 export default function InteractiveOscillator(props) {
+  // Call setup SetupOscillator and SetupStates
+  const { gainNodeRef, oscRef } = SetupOscillator(props);
+  const { freqState, oscType, gainState } = SetupStates(props);
   };
   const oscSelector = new Dropdown({
     label: "Shape: ",
