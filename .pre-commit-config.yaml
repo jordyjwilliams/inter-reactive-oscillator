@@ -29,9 +29,9 @@ repos:
         stages: [commit]
 
   # commitizen
-#  - repo: https://github.com/commitizen-tools/commitizen
-#    rev: v2.37.0
-#    hooks:
-#      - id: commitizen
-#      - id: commitizen-branch
-#        stages: [push]
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v2.37.0
+    hooks:
+      - id: commitizen
+      - id: commitizen-branch
+        stages: [push]
