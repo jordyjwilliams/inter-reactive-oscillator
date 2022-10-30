@@ -42,3 +42,6 @@ For development and building:
 ### Testing/CICD
 * Add/fix tests
 * Add CICD --> automated testing and branch rules
+
+## Docs
+* Improve documentation
