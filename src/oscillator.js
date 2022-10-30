@@ -2,15 +2,37 @@ import React, { useRef, useEffect, useState } from "react";
 import Dropdown from "./dropdown";
 import Slider from "./slider";
 import "./audioStyles.scss";
+import PropTypes from "prop-types";
 
 const oscillatorTypes = [
   { label: "\u223F", value: "sine" },
   { label: "\u2293", value: "square" },
   { label: "\u3030", value: "sawtooth" },
   { label: "^⌄", value: "triangle" },
-  // { label: 'Custom', value: 'custom' },
 ];
 
+/**
+ * Interactive Oscillator.
+ * Renders oscillators with gain, frequency sliders/input boxes
+ * Separate play pause buttons.
+ * @component
+ * @example
+ * const [oscPlaying, setOscPlaying] = useState(false);
+ * const osc = new InteractiveOscillator({
+ *   initOscType: "sine",
+ *   initFreq: "73",
+ *   minFreq: "20",
+ *   maxFreq: "1000",
+ *   id: "osc",
+ *   isPlaying: osc1Playing,
+ *   setPlaying: setOsc1Playing,
+ * });
+ * return (
+ *   <div id="osc-div" htmlFor="osc">
+ *     {osc}
+ *   </div>
+ * )
+ */
 export default function InteractiveOscillator(props) {
   // TODO: reduce the calls here... Define out of fn
   // setup default useState objects
@@ -126,3 +148,20 @@ export default function InteractiveOscillator(props) {
     </div>
   );
 }
+
+InteractiveOscillator.propTypes = {
+  /** Initial frequency of oscillator [Hz] */
+  initFreq: PropTypes.number,
+  /** Max frequency of oscillator [Hz] */
+  maxFreq: PropTypes.number,
+  /** Min frequency of oscillator [Hz] */
+  minFreq: PropTypes.number,
+  /** Initial oscillator waveshape */
+  initOscType: PropTypes.oneOf(oscillatorTypes.map((item) => item.value)),
+  /** playing useState */
+  isPlaying: PropTypes.bool,
+  /** sets playing useState */
+  setPlaying: PropTypes.func,
+  /** id */
+  id: PropTypes.string,
+};
