@@ -44,4 +44,5 @@ For development and building:
 * Add CICD --> automated testing and branch rules
 
 ## Docs
-* Improve documentation
+* Improve documentation --> `jsdoc`, `better-docs`
+* Fix all docstrings `Slider` and `Dropdown`
