@@ -13,9 +13,12 @@ export default function App() {
   // const globalAudioSource =
   // const canvasElement = document.querySelector(".scope");
 
-  // TODO: set these nicer
+  /**
+   * TODO: look at removing isPlaying, setPlaying here
+   * Instantiate objects with refactored code, then pass to global
+   */
 
-  const { osc1, osc1Ref } = new InteractiveOscillator({
+  const osc1 = new InteractiveOscillator({
     initOscType: "sine",
     initFreq: "73",
     minFreq: "20",
@@ -34,7 +37,7 @@ export default function App() {
     isPlaying: osc2Playing,
     setPlaying: setOsc2Playing,
     // globalSource: globalAudioSource,
-  })[0];
+  });
   const osc3 = new InteractiveOscillator({
     initOscType: "triangle",
     initFreq: "75",
@@ -44,7 +47,7 @@ export default function App() {
     isPlaying: osc3Playing,
     setPlaying: setOsc3Playing,
     // globalSource: globalAudioSource,
-  })[0];
+  });
   const globalPP = new GlobalPlayPause({
     playStates: [
       { isPlaying: osc1Playing, setPlaying: setOsc1Playing },
