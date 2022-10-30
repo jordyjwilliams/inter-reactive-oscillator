@@ -16,10 +16,11 @@ export default function App() {
   /**
    * TODO: look at removing isPlaying, setPlaying here
    * Instantiate objects with refactored code, then pass to global
+   * TODO: look into using draw and audio methods mentioned
    */
 
   const osc1 = new InteractiveOscillator({
-    initOscType: "sine",
+    initOscType: "sifne",
     initFreq: "73",
     minFreq: "20",
     maxFreq: "1000",
