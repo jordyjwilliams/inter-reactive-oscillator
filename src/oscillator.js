@@ -45,6 +45,7 @@ export default function InteractiveOscillator(props) {
     console.log(`${event.target.id} set to ${event.target.value}`);
     cb(event.target.value);
   };
+  //! Instantiating Components //
   const oscSelector = new Dropdown({
     label: "Shape: ",
     initValue: oscType.get,
@@ -69,6 +70,7 @@ export default function InteractiveOscillator(props) {
     label: `Gain (0-1)`,
     id: `${props.id}-gain-slider`,
   });
+  //! useEffects //
   // update oscType
   useEffect(() => {
     if (oscRef.current) oscRef.current.type = oscType;
