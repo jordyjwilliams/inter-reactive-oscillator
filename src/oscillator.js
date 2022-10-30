@@ -39,25 +39,30 @@ export default function InteractiveOscillator(props) {
   // Call setup SetupOscillator and SetupStates
   const { gainNodeRef, oscRef } = SetupOscillator(props);
   const { freqState, oscType, gainState } = SetupStates(props);
+  //! State change handler //
+  // Callback should be useState setter fn
+  const handleStateChange = (event, cb) => {
+    console.log(`${event.target.id} set to ${event.target.value}`);
+    cb(event.target.value);
   };
   const oscSelector = new Dropdown({
     label: "Shape: ",
-    initValue: oscType,
-    handleChange: (e) => handleChangeOscType(e, props),
+    initValue: oscType.get,
+    handleChange: (e) => handleStateChange(e, oscType.set),
     optionList: oscillatorTypes,
     id: `${props.id}-osc-type-dropdown`,
   });
   const freqSlider = new Slider({
-    val: freq,
-    onSlide: (e) => onSlideFreq(e, props),
+    val: freqState.get,
+    onSlide: (e) => handleStateChange(e, freqState.set),
     min: props.minFreq,
     max: props.maxFreq,
     label: `Frequency [Hz] (min: ${props.minFreq}, max: ${props.maxFreq})`,
     id: `${props.id}-freq-slider`,
   });
   const gainSlider = new Slider({
-    val: gain,
-    onSlide: (e) => onSlideGain(e, props),
+    val: gainState.get,
+    onSlide: (e) => handleStateChange(e, gainState.set),
     min: 0,
     max: 1,
     step: 0.01,
