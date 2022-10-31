@@ -1,6 +1,10 @@
 # Inter-React-ive Oscillator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![package version](https://img.shields.io/github/package-json/v/jordyjwilliams/inter-reactive-oscillator?style=plastic)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=plastic)](https://conventionalcommits.org)
+[![pre commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?style=plastic&logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+[![commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=plastic)](https://github.com/commitizen-tools/commitizen)
+[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=plastic)](https://github.com/prettier/prettier)
 
 First attempt at a react component using `webAudioAPI` to create an interactive Oscillator react component.
 
