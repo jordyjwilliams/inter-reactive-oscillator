@@ -35,6 +35,8 @@ These are both available on `pip` and `conda`... To manage the `cross-platform` 
 
 The use of the `pip`/`Python` packages is simply as they are intended to be more 'cross-platform' than their `npm` counterparts.
 
+**NOTE:** **_The install script has only been tested on `Linux`. However should work on macOS/possibly windows._**
+
 ## Screenshots
 
 ### Singular `InteractiveOscillator`
