@@ -1,23 +1,45 @@
 # Inter-React-ive Oscillator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![package version](https://img.shields.io/github/package-json/v/jordyjwilliams/inter-reactive-oscillator?style=plastic)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=plastic)](https://conventionalcommits.org)
+[![pre commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?style=plastic&logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+[![commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=plastic)](https://github.com/commitizen-tools/commitizen)
+[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=plastic)](https://github.com/prettier/prettier)
 
-First attempt at a react component using webAudioAPI to create an interactive Oscillator react component.
+First attempt at a react component using `webAudioAPI` to create an interactive Oscillator react component.
 
-## Dependencies
+## Installation/Development
 
 This project uses [pnpm](https://pnpm.io/) for package management.
 
-- To install this globally run `npm i -g pnpm`
+- To install and run this package you will simply need `pnpm`
 
-### Dev Dependencies
+  - `npm i -g pnpm`
+
+- For contribution and project setup see `Development Dependencies` below.
+
+### Development Dependencies
 
 In addition to the `devDependencies` in the `package.json` this project uses the following packages:
 
-- [commitizen](https://commitizen-tools.github.io/commitizen/): `pip install commitizen`
-- [pre-commit](https://pre-commit.com/) `pip install pre-commit`
+- [commitizen](https://commitizen-tools.github.io/commitizen/)
+- [pre-commit](https://pre-commit.com/)
 
-Please install these locally before commencing. The use of the `pip`/`Python` packages is simply as they are intended to be more 'cross-platform' than their `npm` counterparts.
+#### Install Script
+
+These are both available on `pip` and `conda`... To manage the `cross-platform` dependencies an install script has been created:
+
+- Make the script executable: `chmod u+x ./install.sh`
+- Run the install script from the project root directory: `./install.sh`
+- This script will:
+  - Install/check all necessary dependencies and prerequisites from `pip`/`npm`.
+  - Install the `pre-commit` hooks with `pre-commit`
+  - Install the from the `project.json` file with `pnpm`
+- If you would like to use `conda` or other package managers then a manual install is required.
+
+The use of the `pip`/`Python` packages is simply as they are intended to be more 'cross-platform' than their `npm` counterparts.
+
+**NOTE:** **_The install script has only been tested on `Linux`. However should work on macOS/possibly windows._**
 
 ## Screenshots
 
