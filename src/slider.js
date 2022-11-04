@@ -30,26 +30,28 @@ export default function Slider(props) {
   return (
     <div>
       <br />
-      <label htmlFor={`${id}-numeric-input-slider-val`}>{label}</label>
+      <label htmlFor={`${props.id}-numeric-input-slider-val`}>
+        {props.label}
+      </label>
       <br />
       <input
         type="number"
-        id={`${id}-numeric-input-slider-val`}
-        htmlFor={`${id}-slider-input`}
-        value={val}
-        onChange={(val) => onSlide(val)}
+        id={`${props.id}-numeric-input-slider-val`}
+        htmlFor={`${props.id}-slider-input`}
+        value={props.val}
+        onChange={props.onSlide}
       />
       <br />
       <input
         name="slider"
         type="range"
-        id={`${id}-slider-input`}
-        min={min}
-        max={max}
-        defaultValue={val}
-        step={step}
-        value={val}
-        onChange={(slideValue) => onSlide(slideValue)}
+        id={`${props.id}-slider-input`}
+        min={props.min}
+        max={props.max}
+        defaultValue={props.val}
+        step={props.step}
+        value={props.val}
+        onChange={props.onSlide}
       />
     </div>
   );
