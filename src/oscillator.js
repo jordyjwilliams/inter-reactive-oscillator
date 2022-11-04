@@ -102,17 +102,18 @@ export default function InteractiveOscillator(props) {
 
 InteractiveOscillator.propTypes = {
   /** Initial frequency of oscillator [Hz] */
-  initFreq: PropTypes.number,
+  initFreq: PropTypes.number.isRequired,
   /** Max frequency of oscillator [Hz] */
-  maxFreq: PropTypes.number,
+  maxFreq: PropTypes.number.isRequired,
   /** Min frequency of oscillator [Hz] */
-  minFreq: PropTypes.number,
+  minFreq: PropTypes.number.isRequired,
   /** Initial oscillator waveshape */
-  initOscType: PropTypes.oneOf(oscillatorTypes.map((item) => item.value)),
+  initOscType: PropTypes.oneOf(oscillatorTypes.map((item) => item.value))
+    .isRequired,
   /** playing useState */
-  isPlaying: PropTypes.bool,
+  isPlaying: PropTypes.bool.isRequired,
   /** sets playing useState */
-  setPlaying: PropTypes.func,
+  setPlaying: PropTypes.func.isRequired,
   /** id */
   id: PropTypes.string,
 };

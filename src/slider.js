@@ -18,7 +18,7 @@ import PropTypes from "prop-types";
  *   label: `Frequency [Hz] `,
  *   id: `my-freq-slider`,
  * });
- * // Rendering:
+ * // Rendering, inside App.js or another comp.
  * return(
  *    <div id="freq-slider-div" htmlFor="my-freq-slider">
  *      {freqSlider}
@@ -59,15 +59,15 @@ export default function Slider(props) {
 
 Slider.propTypes = {
   /** Minimum slider value */
-  min: PropTypes.number,
+  min: PropTypes.number.isRequired,
   /** Maximum slider value */
-  max: PropTypes.number,
+  max: PropTypes.number.isRequired,
   /** Slider step size */
   step: PropTypes.number,
   /** Initial slider value */
-  val: PropTypes.number,
+  val: PropTypes.number.isRequired,
   /** Function called on slider change */
-  onSlide: PropTypes.func,
+  onSlide: PropTypes.func.isRequired,
   /** Slider label content */
   label: PropTypes.string,
   /** id */
