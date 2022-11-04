@@ -1,12 +1,49 @@
+import PropTypes from "prop-types";
+import "./synthStyles.css";
+
+/**
+ * Dropdown react component. Created from input optionList.
+ * @component
+ * @example
+ * const myOptions = [
+ * { label: "Sine wave", value: "sine" },
+ * { label: "Square wave", value: "square" },
+ * { label: "Sawtooth wave", value: "sawtooth" },
+ * { label: "Triangle wave", value: "triangle" },
+ * ];
+ * const [getOptionType, setOptionType] = useState("sine");
+ *
+ * const handleStateChange = (event, cb) => {
+ *   console.log(`${event.target.id} set to ${event.target.value}`);
+ *   cb(event.target.value);
+ * };
+ *
+ * const waveShapeDropdown = new Dropdown({
+ *   initValue: getOptionType,
+ *   handleChange: (e) => handleStateChange(e, setOptionType.set),
+ *   optionList: myOptions,
+ *   label: `Wave Shape: `,
+ *   id: `my-wave-shape-selector`,
+ * });
+ * // Rendering, inside App.js or another comp.
+ * return(
+ *    <div id="wave-shape-selector-div" htmlFor="my-wave-shape-selector">
+ *      {waveShapeDropdown}
+ *    </div>
+ * )
+ */
+
 export default function Dropdown(props) {
-  // Requires props of: initValue, handleChange, optionList
-  // Creates drop down of optionList. Calls handleChange for event change.
   return (
     <div>
-      <label>
+      <label className="text-label">
         {" "}
         {props.label}
-        <select value={props.initValue} onChange={props.handleChange}>
+        <select
+          value={props.initValue}
+          onChange={props.handleChange}
+          id={`${props.id}`}
+        >
           {props.optionList.map((option) => (
             <option value={option.value}>{option.label}</option>
           ))}
@@ -15,3 +52,17 @@ export default function Dropdown(props) {
     </div>
   );
 }
+
+Dropdown.propTypes = {
+  /** Initial option value */
+  initValue: PropTypes.string.isRequired,
+  /** Array of objects with value and label */
+  optionList: PropTypes.array.isRequired,
+  /** Function called on dropdown change */
+  handleChange: PropTypes.func.isRequired,
+
+  /** Slider label content */
+  label: PropTypes.string,
+  /** id */
+  id: PropTypes.string,
+};
