@@ -65,7 +65,7 @@ export default function InteractiveOscillator(props) {
       handleStateChange(e, freqState.set, props.minFreq, props.maxFreq),
     min: props.minFreq,
     max: props.maxFreq,
-    label: `Frequency [Hz] (min: ${props.minFreq}, max: ${props.maxFreq})`,
+    label: `Frequency [Hz]`,
     id: `${props.id}-freq-slider`,
   });
   const gainSlider = new Slider({
@@ -74,7 +74,7 @@ export default function InteractiveOscillator(props) {
     min: 0,
     max: 1,
     step: 0.01,
-    label: `Gain (0-1)`,
+    label: `Gain`,
     id: `${props.id}-gain-slider`,
   });
   //! useEffects //
