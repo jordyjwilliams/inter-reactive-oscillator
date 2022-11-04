@@ -23,6 +23,9 @@ Project still in a WIP state.
 - `README.md` to track state
 - **TODO** section
 - this `CHANGELOG.md`
+- uses `propTypes` and `props` in all components
+- docstrings formatted for `better-docs` everywhere
+  - TODO: fix the generation of docs
 
 ### Fix
 
