@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 /**
  * Dropdown react component. Created from input optionList.
  * @component
@@ -45,3 +46,17 @@ export default function Dropdown(props) {
     </div>
   );
 }
+
+Dropdown.propTypes = {
+  /** Initial option value */
+  initValue: PropTypes.string.isRequired,
+  /** Array of objects with value and label */
+  optionList: PropTypes.array.isRequired,
+  /** Function called on dropdown change */
+  handleChange: PropTypes.func.isRequired,
+
+  /** Slider label content */
+  label: PropTypes.string,
+  /** id */
+  id: PropTypes.string,
+};
