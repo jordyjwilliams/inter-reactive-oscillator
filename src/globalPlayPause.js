@@ -1,4 +1,5 @@
 import "./audioStyles.scss";
+import "./synthStyles.css";
 import React, { useState, useEffect } from "react";
 
 export default function GlobalPlayPause(props) {
@@ -22,7 +23,7 @@ export default function GlobalPlayPause(props) {
 
   return (
     <div>
-      <label htmlFor="global-play-pause">
+      <label htmlFor="global-play-pause" className="text-label">
         Global Controls:
         <br />
         <button

@@ -4,6 +4,7 @@ import Slider from "./slider";
 import SetupOscillator from "./setupOscillator";
 import SetupStates from "./setupOscillatorStates";
 import "./audioStyles.scss";
+import "./synthStyles.css";
 import PropTypes from "prop-types";
 
 const oscillatorTypes = [
@@ -85,7 +86,7 @@ export default function InteractiveOscillator(props) {
   }, [gainState.get, gainNodeRef]);
 
   return (
-    <div>
+    <div className="control-box">
       {oscSelector}
       {freqSlider}
       {gainSlider}

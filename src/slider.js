@@ -1,4 +1,6 @@
 import PropTypes from "prop-types";
+import "./synthStyles.css";
+
 /**
  * Slider react component.
  * @component
@@ -30,7 +32,10 @@ export default function Slider(props) {
   return (
     <div>
       <br />
-      <label htmlFor={`${props.id}-numeric-input-slider-val`}>
+      <label
+        htmlFor={`${props.id}-numeric-input-slider-val`}
+        className="text-label"
+      >
         {props.label}
       </label>
       <br />
@@ -40,6 +45,7 @@ export default function Slider(props) {
         htmlFor={`${props.id}-slider-input`}
         value={props.val}
         onChange={props.onSlide}
+        class="slider-input"
       />
       <br />
       <input
@@ -52,6 +58,7 @@ export default function Slider(props) {
         step={props.step}
         value={props.val}
         onChange={props.onSlide}
+        class="synth-slider"
       />
     </div>
   );

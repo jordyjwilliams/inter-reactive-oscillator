@@ -1,4 +1,6 @@
 import PropTypes from "prop-types";
+import "./synthStyles.css";
+
 /**
  * Dropdown react component. Created from input optionList.
  * @component
@@ -34,7 +36,7 @@ import PropTypes from "prop-types";
 export default function Dropdown(props) {
   return (
     <div>
-      <label>
+      <label className="text-label">
         {" "}
         {props.label}
         <select
