@@ -92,4 +92,3 @@ For development and building:
 ## Docs
 
 - Improve documentation --> `jsdoc`, `better-docs`
-- Fix all docstrings `Slider` and `Dropdown`
