@@ -37,7 +37,11 @@ export default function Dropdown(props) {
       <label>
         {" "}
         {props.label}
-        <select value={props.initValue} onChange={props.handleChange}>
+        <select
+          value={props.initValue}
+          onChange={props.handleChange}
+          id={`${props.id}`}
+        >
           {props.optionList.map((option) => (
             <option value={option.value}>{option.label}</option>
           ))}
