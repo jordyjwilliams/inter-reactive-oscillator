@@ -83,6 +83,8 @@ For development and building:
 - Add CSS / make this look nice
 - Osc/scope to view created waveform
   - More possibilities in `webAudioAPI`
+- Fix clamping issues of freq and gain values
+  - Remove all text boxes, use increment and decrement buttons
 
 ### Testing/CICD
 
