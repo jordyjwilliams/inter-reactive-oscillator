@@ -42,10 +42,18 @@ export default function Dropdown(props) {
         <select
           value={props.initValue}
           onChange={props.handleChange}
-          id={`${props.id}`}
+          key={props.id}
+          id={props.id}
+          data-testid="test-dropdown"
         >
-          {props.optionList.map((option) => (
-            <option value={option.value}>{option.label}</option>
+          {props.optionList.map((option, idx) => (
+            <option
+              key={`${props.id}-${idx}`}
+              data-testid={`test-dropdown-option-${idx}`}
+              value={option.value}
+            >
+              {option.label}
+            </option>
           ))}
         </select>
       </label>
@@ -55,11 +63,11 @@ export default function Dropdown(props) {
 
 Dropdown.propTypes = {
   /** Initial option value */
-  initValue: PropTypes.string.isRequired,
+  initValue: PropTypes.string,
   /** Array of objects with value and label */
   optionList: PropTypes.array.isRequired,
   /** Function called on dropdown change */
-  handleChange: PropTypes.func.isRequired,
+  handleChange: PropTypes.func,
 
   /** Slider label content */
   label: PropTypes.string,
