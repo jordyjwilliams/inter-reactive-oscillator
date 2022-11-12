@@ -1,11 +1,11 @@
 import "./audioStyles.scss";
 import "./synthStyles.css";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 export default function GlobalPlayPause(props) {
   // props.playStates: array of each InteractiveOscillator
   // isPlaying and setPlaying keys
-  const [isPlayingGlobal, setPlayingGlobal] = useState(false);
+  const [isPlayingGlobal, setPlayingGlobal] = React.useState(false);
 
   // Get state changes of oscillators
   useEffect(() => {
@@ -29,6 +29,7 @@ export default function GlobalPlayPause(props) {
         <button
           onClick={handleGlobalPlayPause}
           id="global-play-pause"
+          data-testid="test-global-play-pause"
           className={
             isPlayingGlobal ? "play-pause-button paused" : "play-pause-button"
           }

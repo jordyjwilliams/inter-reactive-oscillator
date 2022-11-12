@@ -1,13 +1,13 @@
 import InteractiveOscillator from "./oscillator";
 import GlobalPlayPause from "./globalPlayPause";
-import React, { useState } from "react";
+import React from "react";
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 export default function App() {
-  const [osc1Playing, setOsc1Playing] = useState(false);
-  const [osc2Playing, setOsc2Playing] = useState(false);
-  const [osc3Playing, setOsc3Playing] = useState(false);
+  const [osc1Playing, setOsc1Playing] = React.useState(false);
+  const [osc2Playing, setOsc2Playing] = React.useState(false);
+  const [osc3Playing, setOsc3Playing] = React.useState(false);
   /**
    * TODO: look at removing isPlaying, setPlaying here
    * Instantiate objects with refactored code, then pass to global

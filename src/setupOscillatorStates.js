@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 /**
@@ -12,9 +12,9 @@ import PropTypes from "prop-types";
  * const { freqState, oscType, gainState } = SetupStates({initFreq:freq, initOscType:oscType});
  */
 export default function SetupStates(props) {
-  const [freq, setFreq] = useState(props.initFreq);
-  const [oscType, setOscType] = useState(props.initOscType);
-  const [gain, setGain] = useState(1);
+  const [freq, setFreq] = React.useState(props.initFreq);
+  const [oscType, setOscType] = React.useState(props.initOscType);
+  const [gain, setGain] = React.useState(1);
 
   return {
     freqState: { get: freq, set: setFreq },
