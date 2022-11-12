@@ -66,6 +66,7 @@ For development and building:
 - `pnpm start`: runs default app in development mode. Server will be started at http://localhost:3000.
   - By default 3 nested interactive oscillator objects will be generated in columns.
 - `pnpm test`: launches the test runner _TODO_
+- `pnpm test-coverage`: launches the test runner and reports coverage
 - `pnpm run build`: Builds the app for production to a `build` directory.
   - Bundles React in production mode
   - Optimizes for the best performance.
