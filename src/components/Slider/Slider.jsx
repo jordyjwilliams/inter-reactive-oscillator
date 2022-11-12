@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import "./synthStyles.css";
+import "../../synthStyles.css";
 
 /**
  * Slider react component.
