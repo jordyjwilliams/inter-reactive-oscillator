@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import React from "react";
 
-import GlobalPlayPause from "./globalPlayPause";
+import GlobalPlayPause from "./GlobalPlayPause";
 
 import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 

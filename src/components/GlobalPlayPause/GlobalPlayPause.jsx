@@ -1,5 +1,5 @@
-import "./audioStyles.scss";
-import "./synthStyles.css";
+import "../../audioStyles.scss";
+import "../../synthStyles.css";
 import React, { useEffect } from "react";
 
 export default function GlobalPlayPause(props) {
