@@ -35,6 +35,7 @@ export default function Slider(props) {
       <label
         htmlFor={`${props.id}-numeric-input-slider-val`}
         className="text-label"
+        data-testid="test-slider-input-label"
       >
         {props.label}
       </label>
@@ -45,7 +46,8 @@ export default function Slider(props) {
         htmlFor={`${props.id}-slider-input`}
         value={props.val}
         onChange={props.onSlide}
-        class="slider-input"
+        className="slider-input"
+        data-testid="test-slider-input-textbox"
       />
       <br />
       <input
@@ -54,11 +56,11 @@ export default function Slider(props) {
         id={`${props.id}-slider-input`}
         min={props.min}
         max={props.max}
-        defaultValue={props.val}
         step={props.step}
         value={props.val}
         onChange={props.onSlide}
-        class="synth-slider"
+        className="synth-slider"
+        data-testid="test-slider-input-slider"
       />
     </div>
   );
@@ -72,7 +74,7 @@ Slider.propTypes = {
   /** Slider step size */
   step: PropTypes.number,
   /** Initial slider value */
-  val: PropTypes.number.isRequired,
+  val: PropTypes.number,
   /** Function called on slider change */
   onSlide: PropTypes.func.isRequired,
   /** Slider label content */
