@@ -1,5 +1,5 @@
-import InteractiveOscillator from "./oscillator";
-import GlobalPlayPause from "./globalPlayPause";
+import InteractiveOscillator from "./components/Oscillator/Oscillator";
+import GlobalPlayPause from "./components/GlobalPlayPause/GlobalPlayPause";
 import React from "react";
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
