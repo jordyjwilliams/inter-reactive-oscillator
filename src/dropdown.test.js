@@ -124,25 +124,32 @@ describe("Dropdown default state test", () => {
   test("Clicking the dropdown doesn't change value when initValue set", () => {
     // Render w/ initial value will not change when a change is called
     // Need to set the state w/in the handleChange function
-    render(<Dropdown optionList={testOptionValues} initValue="foo" />);
+    render(
+      <Dropdown
+        optionList={testOptionValues}
+        initValue="bar"
+        handleChange={(e) => console.log(e.target.value)}
+      />
+    );
     const testDropdown = screen.getByTestId("test-dropdown");
     const dropdownOptions = getAllByRole(testDropdown, "option");
     // same initial tests as above
     expect(dropdownOptions.length).toEqual(testOptionValues.length);
-    expect(screen.getByTestId("test-dropdown-option-0").selected).toBeTruthy();
-    expect(screen.getByTestId("test-dropdown-option-1").selected).toBeFalsy();
+    expect(screen.getByTestId("test-dropdown-option-0").selected).toBeFalsy();
+    expect(screen.getByTestId("test-dropdown-option-1").selected).toBeTruthy();
     expect(screen.getByTestId("test-dropdown-option-2").selected).toBeFalsy();
     expect(screen.getByTestId("test-dropdown-option-3").selected).toBeFalsy();
-    expect(testDropdown.value).toBe("foo");
+    expect(testDropdown.value).toBe("bar");
 
     // Change dropdown --> when initValue present, this will not update
     // Needs state handler/cb function passed
     fireEvent.change(testDropdown, {
-      target: { value: "bar" },
+      target: { value: "baz" },
     });
 
-    expect(dropdownOptions[0].selected).toBeTruthy();
-    expect(dropdownOptions[1].selected).toBeFalsy();
-    expect(testDropdown.value).toBe("foo");
+    expect(dropdownOptions[0].selected).toBeFalsy();
+    expect(dropdownOptions[1].selected).toBeTruthy();
+    expect(dropdownOptions[2].selected).toBeFalsy();
+    expect(testDropdown.value).toBe("bar");
   });
 });
