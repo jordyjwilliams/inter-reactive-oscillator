@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import React from "react";
 
-import Dropdown from "./dropdown";
+import Dropdown from "./Dropdown";
 import userEvent from "@testing-library/user-event";
 
 import {
