@@ -7,6 +7,8 @@ import "./audioStyles.scss";
 import "./synthStyles.css";
 import PropTypes from "prop-types";
 
+import Scope from "./scope";
+
 const oscillatorTypes = [
   { label: "\u223F", value: "sine" },
   { label: "\u2293", value: "square" },
@@ -41,7 +43,7 @@ const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
 export default function InteractiveOscillator(props) {
   // Call setup SetupOscillator and SetupStates
-  const { gainNodeRef, oscRef } = SetupOscillator(props);
+  const { gainNodeRef, oscRef, audioContextRef } = SetupOscillator(props);
   const { freqState, oscType, gainState } = SetupStates(props);
   //! State change handler //
   // Callback should be useState setter fn
@@ -77,6 +79,11 @@ export default function InteractiveOscillator(props) {
     label: `Gain`,
     id: `${props.id}-gain-slider`,
   });
+
+  // scope
+  const scope = new Scope({ gainNodeRef, audioContextRef });
+
+
   //! useEffects //
   // update oscType
   useEffect(() => {
@@ -103,6 +110,7 @@ export default function InteractiveOscillator(props) {
           props.isPlaying ? "play-pause-button paused" : "play-pause-button"
         }
       ></button>
+      {scope}
     </div>
   );
 }
